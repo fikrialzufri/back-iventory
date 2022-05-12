@@ -1,0 +1,17 @@
+<?php
+
+namespace App\Models;
+
+use App\Traits\UsesUuid;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class KategoriHargaJualProduk extends Model
+{
+    use HasFactory;
+    use UsesUuid;
+    // mengnonaktifkan incrementing
+    public $incrementing = false;
+    protected $fillable = [];
+    protected $guarded = [];
+}
