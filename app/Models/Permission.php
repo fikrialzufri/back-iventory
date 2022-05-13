@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Traits\UsesUuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Str;
 
 class Permission extends Model
 {
@@ -26,5 +27,11 @@ class Permission extends Model
     {
 
         return $this->belongsToMany(User::class, 'users_permissions');
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

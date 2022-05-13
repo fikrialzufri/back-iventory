@@ -65,24 +65,40 @@ trait HasPermissionsTrait
 
     public function role()
     {
-
         return $this->belongsToMany(Role::class, 'users_roles');
     }
+
+    public function getRolesAttribute()
+    {
+        $result = [];
+        if ($this->role) {
+            foreach ($this->role as $key => $value) {
+                $result[$key] = [
+                    'id' => $value->id,
+                    'name' => $value->name,
+                    'slug' => $value->slug
+                ];
+            }
+        }
+
+        return $result;
+    }
+
     public function permissions()
     {
         return $this->belongsToMany(Permission::class, 'users_permissions');
     }
+
     protected function hasPermission($permission)
     {
-
         return (bool) $this->permissions->where('slug', $permission->slug)->count();
     }
 
     protected function getAllPermissions(array $permissions)
     {
-
         return Permission::whereIn('slug', $permissions)->get();
     }
+
     public function getSlugAttribute()
     {
         return $this->permissions()->get();

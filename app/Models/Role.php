@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\UsesUuid;
+use Str;
 
 class Role extends Model
 {
@@ -30,5 +31,11 @@ class Role extends Model
     public function getPermissionsListAttribute()
     {
         return $this->getAllPermissions;
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = Str::slug($value);
     }
 }

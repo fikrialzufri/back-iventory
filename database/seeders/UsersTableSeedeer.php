@@ -20,17 +20,15 @@ class UsersTableSeedeer extends Seeder
     {
         $superadmin = new Role();
         $superadmin->name = 'Superadmin';
-        $superadmin->slug = 'superadmin';
+
         $superadmin->save();
 
         $adminRole = new Role();
         $adminRole->name = 'Admin';
-        $adminRole->slug = 'admin';
         $adminRole->save();
 
         $kasirRole = new Role();
         $kasirRole->name = 'Kasir';
-        $kasirRole->slug = 'kasir';
         $kasirRole->save();
 
         $superadmin = Role::where('slug', 'superadmin')->first();
@@ -40,7 +38,6 @@ class UsersTableSeedeer extends Seeder
         $superadminUser = new User();
         $superadminUser->name = 'Superadmin';
         $superadminUser->username = 'Superadmin';
-        $superadminUser->slug = Str::slug('Superadmin');
         $superadminUser->email = 'Superadmin@admin.com';
         $superadminUser->password = bcrypt('secret');
         // $superadminUser->icon = 'default-icon.png';
@@ -51,7 +48,6 @@ class UsersTableSeedeer extends Seeder
         $kasirUser = new User();
         $kasirUser->name = 'kasir';
         $kasirUser->username = 'kasir';
-        $kasirUser->slug = Str::slug('kasir');
         $kasirUser->email = 'kasir@admin.com';
         $kasirUser->password = bcrypt('secret');
         // $kasirUser->icon = 'default-icon.png';
@@ -62,7 +58,6 @@ class UsersTableSeedeer extends Seeder
         $admin = new User();
         $admin->name = 'admin';
         $admin->username = 'admin';
-        $admin->slug = Str::slug('admin');
         $admin->email = 'admin@admin.com';
         $admin->password = bcrypt('secret');
         // $admin->icon = 'default-icon.png';
@@ -71,19 +66,19 @@ class UsersTableSeedeer extends Seeder
 
         $taskUser = new Task();
         $taskUser->name = 'User';
-        $taskUser->slug = Str::slug($taskUser->name);
+
         $taskUser->description = 'Manajemen User';
         $taskUser->save();
 
         $taskRole = new Task();
         $taskRole->name = 'Roles';
-        $taskRole->slug = Str::slug($taskRole->name);
+
         $taskRole->description = 'Manajemen Hak Akses ';
         $taskRole->save();
 
         $taskSatuan = new Task();
         $taskSatuan->name = 'Satuan';
-        $taskSatuan->slug = Str::slug($taskSatuan->name);
+
         $taskSatuan->description = 'Manajemen Satuan';
         $taskSatuan->save();
 
@@ -95,13 +90,13 @@ class UsersTableSeedeer extends Seeder
 
         $taskKategori = new Task();
         $taskKategori->name = 'Kategori';
-        $taskKategori->slug = Str::slug($taskKategori->name);
+
         $taskKategori->description = 'Manajemen Kategori';
         $taskKategori->save();
 
         $taskProduk = new Task();
         $taskProduk->name = 'Produk';
-        $taskProduk->slug = Str::slug($taskProduk->name);
+
         $taskProduk->description = 'Manajemen Produk';
         $taskProduk->save();
 
